@@ -453,6 +453,48 @@ namespace Data.Extensions
                     Sdt = "2",
                     NgaySinh = DateTime.Now,
                 });
+            modelBuilder.Entity<TheLoai>().HasData(
+                new TheLoai() 
+                { 
+                Id = new Guid("8d364a55-877f-45a5-9408-66afb8ab8731") ,
+                TenTheLoai= "Giày Chạy Bộ"
+                },
+                new TheLoai()
+                {
+                    Id = new Guid("8d364a55-877f-45a5-9408-66afb8ab8733"),
+                    TenTheLoai = "Giày Bóng Rổ"
+                }
+                );
+            modelBuilder.Entity<ChucVu>().HasData(
+                new ChucVu()
+                {
+                    Id= new Guid("ae47eb40-97bc-4b24-0420-08db2a1480e7"),
+                    Ten="Nhan Vien"
+                },
+                new ChucVu()
+                {
+                    Id = new Guid("ae47eb40-97bc-4b24-0420-08db2a1480e8"),
+                    Ten = "Quan Tri"
+                }
+                );
+            modelBuilder.Entity<NhanVien>().HasData(new NhanVien()
+            {
+                Id= new Guid("bab26baa-d480-4030-dc34-08db31930274"),
+                IdCvu= new Guid("ae47eb40-97bc-4b24-0420-08db2a1480e8"),
+                IdGuiBaoCao= new Guid("bab26baa-d480-4030-dc34-08db31930274"),
+                Ten="Nguyễn Bá Tồn",
+                MaNV="NV",
+                Email= "Ton12@gmail.com",
+                MatKhau= "123456",
+                Sdt= "0967052758",
+                AnhNhanVien="1",
+                GioiTinh=true,
+                DiaChi="Ha Noi",
+                TrangThai=1,
+                NgaySinh=DateTime.Now,
+
+                
+            });
         }
     }
 }
