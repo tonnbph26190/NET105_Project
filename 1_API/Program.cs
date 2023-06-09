@@ -13,7 +13,12 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped(typeof(IAllRepositories<>), typeof(AllRepositories<>));
+<<<<<<< HEAD
 builder.Services.AddDbContext<CuaHangDbContext>(c => c.UseSqlServer(@"Server=NUGETRENKI\SQLEXPRESS;Database=NET105;Trusted_Connection=True;"));
+=======
+builder.Services.AddDbContext<CuaHangDbContext>(c => c.UseSqlServer(@"Data Source=DESKTOP-OJ4UDNH\SQLEXPRESS;Initial Catalog=Fake;Persist Security Info=True;User ID=Nbton03;Password=123"));
+
+>>>>>>> master
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

@@ -11,10 +11,7 @@
 </p>
 <table class="table">
     <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Id)
-            </th>
+        <tr>            
             <th>
                 @Html.DisplayNameFor(model => model.Ma)
             </th>
@@ -38,10 +35,7 @@
     </thead>
     <tbody>
 @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
+        <tr>           
             <td>
                 @Html.DisplayFor(modelItem => item.Ma)
             </td>
@@ -64,7 +58,7 @@
                     <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                     <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
                 
-                @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+                @*@Html.ActionLink("Delete", "Delete", new { id=item.Id })*@
             </td>
         </tr>
 }

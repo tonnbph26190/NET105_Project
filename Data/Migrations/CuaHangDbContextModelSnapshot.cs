@@ -302,7 +302,11 @@ namespace _2_Data.Migrations
                             Email = "a",
                             GioiTinh = true,
                             MatKhau = "1",
+<<<<<<< HEAD
                             NgaySinh = new DateTime(2023, 6, 6, 22, 26, 52, 323, DateTimeKind.Local).AddTicks(8709),
+=======
+                            NgaySinh = new DateTime(2023, 6, 6, 12, 21, 8, 597, DateTimeKind.Local).AddTicks(6243),
+>>>>>>> master
                             Sdt = "1",
                             Ten = "a"
                         },
@@ -313,7 +317,11 @@ namespace _2_Data.Migrations
                             Email = "b",
                             GioiTinh = true,
                             MatKhau = "1",
+<<<<<<< HEAD
                             NgaySinh = new DateTime(2023, 6, 6, 22, 26, 52, 323, DateTimeKind.Local).AddTicks(8713),
+=======
+                            NgaySinh = new DateTime(2023, 6, 6, 12, 21, 8, 597, DateTimeKind.Local).AddTicks(6249),
+>>>>>>> master
                             Sdt = "2",
                             Ten = "b"
                         });
@@ -645,7 +653,11 @@ namespace _2_Data.Migrations
                             IdMauSac = new Guid("7a6c0c50-fb67-44ea-9c62-ad0e0f67ab3c"),
                             IdSP = new Guid("01bf8a6c-d89a-4db2-9068-af277be488ae"),
                             MaSPChiTiet = "SP1",
+<<<<<<< HEAD
                             NgayTao = new DateTime(2023, 6, 6, 22, 26, 52, 323, DateTimeKind.Local).AddTicks(8333),
+=======
+                            NgayTao = new DateTime(2023, 6, 6, 12, 21, 8, 597, DateTimeKind.Local).AddTicks(5779),
+>>>>>>> master
                             TenSPChiTiet = "V1",
                             TrangThai = 1
                         },
@@ -661,7 +673,11 @@ namespace _2_Data.Migrations
                             IdMauSac = new Guid("5e5f7d51-044f-4928-9aac-4a496c629231"),
                             IdSP = new Guid("9a1b3786-d0d0-402a-bfd8-10db04f8e6ed"),
                             MaSPChiTiet = "SP2",
+<<<<<<< HEAD
                             NgayTao = new DateTime(2023, 6, 6, 22, 26, 52, 323, DateTimeKind.Local).AddTicks(8349),
+=======
+                            NgayTao = new DateTime(2023, 6, 6, 12, 21, 8, 597, DateTimeKind.Local).AddTicks(5799),
+>>>>>>> master
                             TenSPChiTiet = "V2",
                             TrangThai = 1
                         },
@@ -677,7 +693,11 @@ namespace _2_Data.Migrations
                             IdMauSac = new Guid("8d364a55-877f-45a5-9408-66afb8ab873f"),
                             IdSP = new Guid("01bf8a6c-d89a-4db2-9068-af277be488ae"),
                             MaSPChiTiet = "SP1",
+<<<<<<< HEAD
                             NgayTao = new DateTime(2023, 6, 6, 22, 26, 52, 323, DateTimeKind.Local).AddTicks(8353),
+=======
+                            NgayTao = new DateTime(2023, 6, 6, 12, 21, 8, 597, DateTimeKind.Local).AddTicks(5804),
+>>>>>>> master
                             TenSPChiTiet = "V1",
                             TrangThai = 1
                         },
@@ -693,7 +713,11 @@ namespace _2_Data.Migrations
                             IdMauSac = new Guid("cfa013b0-34dc-44d5-a471-7c49a9ac167d"),
                             IdSP = new Guid("9a1b3786-d0d0-402a-bfd8-10db04f8e6ed"),
                             MaSPChiTiet = "SP2",
+<<<<<<< HEAD
                             NgayTao = new DateTime(2023, 6, 6, 22, 26, 52, 323, DateTimeKind.Local).AddTicks(8357),
+=======
+                            NgayTao = new DateTime(2023, 6, 6, 12, 21, 8, 597, DateTimeKind.Local).AddTicks(5811),
+>>>>>>> master
                             TenSPChiTiet = "V2",
                             TrangThai = 1
                         });

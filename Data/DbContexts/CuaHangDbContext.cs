@@ -24,7 +24,11 @@ namespace Data.DbContexts
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+<<<<<<< HEAD
             base.OnConfiguring(optionsBuilder.UseSqlServer(@"Server=NUGETRENKI\SQLEXPRESS;Database=NET105;Trusted_Connection=True;"));
+=======
+            base.OnConfiguring(optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-OJ4UDNH\SQLEXPRESS;Initial Catalog=Fake;Persist Security Info=True;User ID=Nbton03;Password=123"));
+>>>>>>> master
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
