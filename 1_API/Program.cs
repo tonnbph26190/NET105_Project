@@ -12,7 +12,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped(typeof(IAllRepositories<>), typeof(AllRepositories<>));
-builder.Services.AddDbContext<CuaHangDbContext>(c => c.UseSqlServer("Server=DESKTOP-733UBE0\\SQLEXPRESS;Database=Net105Database;Trusted_Connection=True;"));
+builder.Services.AddDbContext<CuaHangDbContext>(c => c.UseSqlServer(@"Data Source=DESKTOP-OJ4UDNH\SQLEXPRESS;Initial Catalog=Fake;Persist Security Info=True;User ID=Nbton03;Password=123"));
 
 var app = builder.Build();
 

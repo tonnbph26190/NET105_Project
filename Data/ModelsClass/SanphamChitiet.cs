@@ -33,8 +33,7 @@ namespace Data.ModelsClass
         public decimal GiaBan { get; set; }
         public int? TrangThai { get; set; }
 
-
-        public SanPham? sanPham { get; set; }
+    public SanPham? sanPham { get; set; }
         public MauSac? mauSac { get; set; }
 
         public virtual ICollection<GiohangChitiet> giohangChitiets { get; set; }

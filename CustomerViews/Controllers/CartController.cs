@@ -295,7 +295,7 @@ namespace CustomerViews.Controllers
             await _services.Add(Connection.api + "HoaDons/", hd);
             foreach (var item in ls)
             {
-                var sls = lstSizeSP.FirstOrDefault(x => x.IdSanPhamChiTiet == item.IdSPChitiet);
+                var sls = lstSizeSP.FirstOrDefault(x => x.IdSanPhamChiTiet == item.IdSPChitiet&&x.IdSize==item.IdKichCo);
                 CreateHoaDonChiTiet hdct = new CreateHoaDonChiTiet()
                 {
                     Id = Guid.NewGuid(),
@@ -308,6 +308,7 @@ namespace CustomerViews.Controllers
                 await _services.Add(Connection.api + "HoaDonChiTiets/", hdct);
 
                 sls.SoLuong -= item.SoLuong;
+                var kq = sls.SoLuong;
                 await _services.Update(Connection.api + "SizeSanPhams/Update/", sls, sls.Id);
 
                 await _services.Remove<GiohangChitiet>(Connection.api + "GioHangChiTiets/GetById/", Connection.api + "GioHangChiTiets/Delete/", item.Id);

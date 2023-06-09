@@ -30,7 +30,7 @@ namespace CustomerViews.Controllers
 
             ViewData["lstSP"] = lstSP.ToList();
             ViewData["lstTL"] = lstTL.ToList();
-            return View(lstSPCT.ToList());
+            return View(lstSPCT.ToList().Where(t => t.TrangThai == 1));
         }
         [HttpGet]
         public async Task<IActionResult> Index1(string idTL)
