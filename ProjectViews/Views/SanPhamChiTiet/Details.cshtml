@@ -66,13 +66,13 @@
                 Giá Nhập
             </dt>
             <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.GiaNhap)
+                @string.Format("{0:N0}đ", Model.GiaNhap)
             </dd>
             <dt class="col-sm-2">
                 Giá Bán
             </dt>
             <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.GiaBan)
+                @string.Format("{0:N0}đ", Model.GiaBan)
             </dd>
             <dt class="col-sm-2">
                 Trạng Thái

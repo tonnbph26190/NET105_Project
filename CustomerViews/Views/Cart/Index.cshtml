@@ -35,7 +35,7 @@
                     <td>@(tensp = lstSPCT.FirstOrDefault(x => x.Id == item.IdSPChitiet).TenSPChiTiet)</td>
                     <td>@(size = lstKC.FirstOrDefault(x=>x.Id == item.IdKichCo).Size.ToString())
                     </td>
-                    <td>@item.GiaBan</td>
+                    <td>@string.Format("{0:N0}đ",item.GiaBan)</td>
                     <td>
                         <a asp-action="TangSL" asp-route-id="@item.Id" class="btn btn-sm btn-primary"> + </a>
                         <a>@item.SoLuong</a>
@@ -43,11 +43,11 @@
                     </td>
 
                     <td><a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Xóa</a></td>
-                    <td class="text-end">@(thanhtien = item.GiaBan * item.SoLuong)</td>
+                    <td class="text-end">@string.Format("{0:N0}đ",thanhtien = item.GiaBan * item.SoLuong)</td>
                 </tr>
             }
             <tr>
-                <td class="text-end" colspan="7"><h6>Tổng tiền: @tt</h6> </td>
+                <td class="text-end" colspan="7"><h6>Tổng tiền: @string.Format("{0:N0}đ",tt)</h6> </td>
             </tr>
             <tr>
                 <td colspan="7" class="text-end">

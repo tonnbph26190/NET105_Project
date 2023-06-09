@@ -165,10 +165,10 @@
                                             @Html.DisplayFor(modelItem => product.TenSPChiTiet)
                                            
                                         </a>
-                                        <p class="card-text">  <span style="color: #c30005; font-weight: lighter;text-decoration: line-through;"></span>  @Html.DisplayFor(modelItem => product.GiaBan)VND</p>
+                                        <p class="card-text">  <span style="color: #c30005; font-weight: lighter;text-decoration: line-through;"></span>  @string.Format("{0:N0}đ", product.GiaBan)</p>
                                     </h5>
                                     <p class="">
-                                        <b>Trạng thái: @(product.TrangThai == 1 ? "Còn hàng" : "Hết hàng")</b>
+                                        <b>Trạng thái: @(product.TrangThai != 1 ? "Còn hàng" : "Hết hàng")</b>
                                     </p>
                                 </div>
 
@@ -216,10 +216,10 @@
                                             @Html.DisplayFor(modelItem => product.TenSPChiTiet)
                                             @*@(tensp = lstSP.FirstOrDefault(p => p.Id == product.IdSP).Ten)*@
                                         </a>
-                                        <p class="card-text">  <span style="color: #c30005; font-weight: lighter;text-decoration: line-through;"></span>  @Html.DisplayFor(modelItem => product.GiaBan)VND</p>
+                                        <p class="card-text">  <span style="color: #c30005; font-weight: lighter;text-decoration: line-through;"></span>   @string.Format("{0:N0}đ", product.GiaBan)</p>
                                     </h5>
                                     <p class="">
-                                        <b>Trạng thái: @(product.TrangThai == 1 ? "Còn hàng" : "Hết hàng")</b>
+                                        <b>Trạng thái: @(product.TrangThai != 1 ? "Còn hàng" : "Hết hàng")</b>
                                     </p>
                                 </div>
 

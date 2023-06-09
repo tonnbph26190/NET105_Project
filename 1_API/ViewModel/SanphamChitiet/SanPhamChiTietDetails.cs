@@ -7,7 +7,7 @@
         public string? MauSac { get; set; }
         public string? GiaNhap { get; set; }
         public string? GiaBan { get; set; }
-        public string? TrangThai { get; set; }
+        public int? TrangThai { get; set; }
         public string? AnhDaiDien { get; set; }
         public string? AnhPhu1 { get; set; }
         public string? AnhPhu2 { get; set; }

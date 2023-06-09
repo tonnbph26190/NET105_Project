@@ -19,7 +19,7 @@
             <div class="form-group">
                 <label asp-for="IdSize" class="control-label">Size</label>
                 <select asp-for="IdSize" class="form-select">
-                    @foreach (var item in lstSize)
+                    @foreach (var item in lstSizeSP)
                     {
                         <option value="@item.Id">
                             @item.Size

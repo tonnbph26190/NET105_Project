@@ -2,6 +2,7 @@ using Data.DbContexts;
 using Data.IRepositories;
 using Data.Repositories;
 using Microsoft.EntityFrameworkCore;
+using static System.Net.Mime.MediaTypeNames;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,8 +13,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped(typeof(IAllRepositories<>), typeof(AllRepositories<>));
-builder.Services.AddDbContext<CuaHangDbContext>(c => c.UseSqlServer("Server=DESKTOP-733UBE0\\SQLEXPRESS;Database=Net105Database;Trusted_Connection=True;"));
-
+builder.Services.AddDbContext<CuaHangDbContext>(c => c.UseSqlServer(@"Server=NUGETRENKI\SQLEXPRESS;Database=NET105;Trusted_Connection=True;"));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

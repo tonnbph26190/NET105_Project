@@ -34,7 +34,7 @@ namespace ProjectViews.Controllers
                            Id= a.Id,
                            GiaBan = a.GiaBan,
                            TenMauSac=d.TenMau,
-                           TrangThai = a.TrangThai == 1 ? "Đang hoạt động" : "Ngưng hoạt động",
+                           TrangThai = a.TrangThai,
                            MaSPChiTiet = a.MaSPChiTiet,
                            TenSPChiTiet = a.TenSPChiTiet,
                            AnhDaiDien = a.AnhDaiDien
@@ -58,7 +58,7 @@ namespace ProjectViews.Controllers
                      {
                          Id = a.Id,
                          Ten = a.Ten,
-                         TrangThai = a.TrangThai == 1 ? "Đang hoạt động" : "Ngưng hoạt động",
+                         TrangThai = a.TrangThai,
                          TenHang = b.TenHang
                      };
             var sp1 = sp.FirstOrDefault(p => p.Id == Guid.Parse(id));
@@ -89,7 +89,7 @@ namespace ProjectViews.Controllers
                      {
                          Id = a.Id,
                          Ten = a.Ten,
-                         TrangThai = a.TrangThai == 1 ? "Đang hoạt động" : "Ngưng hoạt động",
+                         TrangThai = a.TrangThai,
                          TenHang = b.TenHang
                      };
             var sp1 = sp.FirstOrDefault(p => p.Id == (model.IdSP));
@@ -206,7 +206,7 @@ namespace ProjectViews.Controllers
                      {
                          Id = a.Id,
                          Ten = a.Ten,
-                         TrangThai = a.TrangThai == 1 ? "Đang hoạt động" : "Ngưng hoạt động",
+                         TrangThai = a.TrangThai,
                          TenHang = b.TenHang
                      };
             var sp1 = sp.FirstOrDefault(p => p.Id == spct.IdSP);
@@ -262,7 +262,7 @@ namespace ProjectViews.Controllers
                      {
                          Id = a.Id,
                          Ten = a.Ten,
-                         TrangThai = a.TrangThai == 1 ? "Đang hoạt động" : "Ngưng hoạt động",
+                         TrangThai = a.TrangThai,
                          TenHang = b.TenHang
                      };
             var sp1 = sp.FirstOrDefault(p => p.Id == spct.IdSP);
@@ -387,7 +387,7 @@ namespace ProjectViews.Controllers
             {
                 GiaBan = ctsp.b.GiaBan.ToString(),
                 GiaNhap = ctsp.b.GiaNhap.ToString(),
-                TrangThai = ctsp.b.TrangThai == 1 ? "Đang hoạt động" : "Ngưng hoạt động",
+                TrangThai = ctsp.b.TrangThai,
                 MauSac = ctsp.c.TenMau,
                 TenSP = ctsp.a.Ten,
                 TenChiTiet = ctsp.b.TenSPChiTiet,

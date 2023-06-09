@@ -35,6 +35,18 @@ namespace _2_Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ChucVu", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("ae47eb40-97bc-4b24-0420-08db2a1480e7"),
+                            Ten = "Nhan Vien"
+                        },
+                        new
+                        {
+                            Id = new Guid("ae47eb40-97bc-4b24-0420-08db2a1480e8"),
+                            Ten = "Quan Tri"
+                        });
                 });
 
             modelBuilder.Entity("Data.ModelsClass.GioHang", b =>
@@ -79,6 +91,9 @@ namespace _2_Data.Migrations
                         .IsRequired()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid?>("IdKichCo")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<Guid>("IdSPChitiet")
                         .HasColumnType("uniqueidentifier");
 
@@ -89,27 +104,11 @@ namespace _2_Data.Migrations
 
                     b.HasIndex("IdGioHang");
 
+                    b.HasIndex("IdKichCo");
+
                     b.HasIndex("IdSPChitiet");
 
                     b.ToTable("GiohangChitiet", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("040174d7-fb1c-4fff-912c-215f1562e2ea"),
-                            GiaBan = 20000m,
-                            IdGioHang = new Guid("9779e43b-fcfc-40a0-b778-fa6f4757fd55"),
-                            IdSPChitiet = new Guid("7aaf5675-683d-4608-9534-ea737a4247b3"),
-                            SoLuong = 3
-                        },
-                        new
-                        {
-                            Id = new Guid("e5fb1f37-454c-4aae-968d-d19c6e8cc9fa"),
-                            GiaBan = 10000m,
-                            IdGioHang = new Guid("87c18de0-9653-408e-9f7d-36b2f5a3d890"),
-                            IdSPChitiet = new Guid("51a13afd-08d1-4a20-a0e0-fb4447bd215d"),
-                            SoLuong = 2
-                        });
                 });
 
             modelBuilder.Entity("Data.ModelsClass.Hang", b =>
@@ -194,6 +193,10 @@ namespace _2_Data.Migrations
                     b.Property<Guid?>("IdNV")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("MaHD")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime?>("NgayTao")
                         .IsRequired()
                         .HasColumnType("datetime2");
@@ -231,6 +234,9 @@ namespace _2_Data.Migrations
                         .IsRequired()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid?>("IdKichCo")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<Guid?>("IdSPChitiet")
                         .IsRequired()
                         .HasColumnType("uniqueidentifier");
@@ -242,6 +248,8 @@ namespace _2_Data.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("IdHoaDon");
+
+                    b.HasIndex("IdKichCo");
 
                     b.HasIndex("IdSPChitiet");
 
@@ -294,7 +302,7 @@ namespace _2_Data.Migrations
                             Email = "a",
                             GioiTinh = true,
                             MatKhau = "1",
-                            NgaySinh = new DateTime(2023, 2, 22, 16, 33, 53, 624, DateTimeKind.Local).AddTicks(6203),
+                            NgaySinh = new DateTime(2023, 6, 6, 22, 26, 52, 323, DateTimeKind.Local).AddTicks(8709),
                             Sdt = "1",
                             Ten = "a"
                         },
@@ -305,7 +313,7 @@ namespace _2_Data.Migrations
                             Email = "b",
                             GioiTinh = true,
                             MatKhau = "1",
-                            NgaySinh = new DateTime(2023, 2, 22, 16, 33, 53, 624, DateTimeKind.Local).AddTicks(6231),
+                            NgaySinh = new DateTime(2023, 6, 6, 22, 26, 52, 323, DateTimeKind.Local).AddTicks(8713),
                             Sdt = "2",
                             Ten = "b"
                         });
@@ -338,13 +346,33 @@ namespace _2_Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("bd3aeb4b-dcdb-445b-9669-f5a1ce0c29d7"),
+                            Id = new Guid("d6dc21e2-f1be-48ec-8f30-bd6bbc73daec"),
                             Size = 38f
                         },
                         new
                         {
-                            Id = new Guid("670ad56f-8d6a-478e-8ca5-bef8d0e38af5"),
+                            Id = new Guid("9297a9b2-5c69-4b52-af99-57bbf137dcf1"),
                             Size = 39f
+                        },
+                        new
+                        {
+                            Id = new Guid("3a218de7-0c55-4b70-a0d8-823195532b66"),
+                            Size = 40f
+                        },
+                        new
+                        {
+                            Id = new Guid("2d53402b-696d-4e6e-b95e-fb5f2a99c014"),
+                            Size = 41f
+                        },
+                        new
+                        {
+                            Id = new Guid("560cd8d3-52cc-4204-9145-0a142cdac1fd"),
+                            Size = 42f
+                        },
+                        new
+                        {
+                            Id = new Guid("9b9a3a86-196e-4fb2-9300-a64784962d59"),
+                            Size = 43f
                         });
                 });
 
@@ -366,8 +394,7 @@ namespace _2_Data.Migrations
                         .IsRequired()
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("PhanTramGiam")
-                        .IsRequired()
+                    b.Property<int>("PhanTramGiam")
                         .HasColumnType("int");
 
                     b.Property<int?>("SoLuong")
@@ -405,8 +432,18 @@ namespace _2_Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("9a1b3786-d0d0-402a-bfd8-10db04f8e6ed"),
-                            TenMau = "Do"
+                            Id = new Guid("5e5f7d51-044f-4928-9aac-4a496c629231"),
+                            TenMau = "Đỏ"
+                        },
+                        new
+                        {
+                            Id = new Guid("cfa013b0-34dc-44d5-a471-7c49a9ac167d"),
+                            TenMau = "Đen"
+                        },
+                        new
+                        {
+                            Id = new Guid("8d364a55-877f-45a5-9408-66afb8ab873f"),
+                            TenMau = "Trắng"
                         });
                 });
 
@@ -473,6 +510,24 @@ namespace _2_Data.Migrations
                     b.HasIndex("IdGuiBcNavigationId");
 
                     b.ToTable("NhanVien", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("bab26baa-d480-4030-dc34-08db31930274"),
+                            AnhNhanVien = "1",
+                            DiaChi = "Ha Noi",
+                            Email = "Ton12@gmail.com",
+                            GioiTinh = true,
+                            IdCvu = new Guid("ae47eb40-97bc-4b24-0420-08db2a1480e8"),
+                            IdGuiBaoCao = new Guid("bab26baa-d480-4030-dc34-08db31930274"),
+                            MaNV = "NV",
+                            MatKhau = "123456",
+                            NgaySinh = new DateTime(2023, 6, 6, 22, 26, 52, 323, DateTimeKind.Local).AddTicks(8762),
+                            Sdt = "0967052758",
+                            Ten = "Nguyễn Bá Tồn",
+                            TrangThai = 1
+                        });
                 });
 
             modelBuilder.Entity("Data.ModelsClass.SanPham", b =>
@@ -526,6 +581,18 @@ namespace _2_Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("AnhPhu1")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AnhPhu2")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AnhPhu3")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<decimal>("GiaBan")
                         .HasColumnType("decimal(18,2)");
 
@@ -544,6 +611,10 @@ namespace _2_Data.Migrations
                     b.Property<string>("MaSPChiTiet")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("NgayTao")
+                        .IsRequired()
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("TenSPChiTiet")
                         .IsRequired()
@@ -566,11 +637,15 @@ namespace _2_Data.Migrations
                         {
                             Id = new Guid("7aaf5675-683d-4608-9534-ea737a4247b3"),
                             AnhDaiDien = "null",
+                            AnhPhu1 = "null",
+                            AnhPhu2 = "null",
+                            AnhPhu3 = "null",
                             GiaBan = 100000m,
                             GiaNhap = 80000m,
                             IdMauSac = new Guid("7a6c0c50-fb67-44ea-9c62-ad0e0f67ab3c"),
                             IdSP = new Guid("01bf8a6c-d89a-4db2-9068-af277be488ae"),
                             MaSPChiTiet = "SP1",
+                            NgayTao = new DateTime(2023, 6, 6, 22, 26, 52, 323, DateTimeKind.Local).AddTicks(8333),
                             TenSPChiTiet = "V1",
                             TrangThai = 1
                         },
@@ -578,12 +653,48 @@ namespace _2_Data.Migrations
                         {
                             Id = new Guid("51a13afd-08d1-4a20-a0e0-fb4447bd215d"),
                             AnhDaiDien = "null",
-                            GiaBan = 100000m,
-                            GiaNhap = 80000m,
-                            IdMauSac = new Guid("9a1b3786-d0d0-402a-bfd8-10db04f8e6ed"),
+                            AnhPhu1 = "null",
+                            AnhPhu2 = "null",
+                            AnhPhu3 = "null",
+                            GiaBan = 200000m,
+                            GiaNhap = 180000m,
+                            IdMauSac = new Guid("5e5f7d51-044f-4928-9aac-4a496c629231"),
                             IdSP = new Guid("9a1b3786-d0d0-402a-bfd8-10db04f8e6ed"),
                             MaSPChiTiet = "SP2",
+                            NgayTao = new DateTime(2023, 6, 6, 22, 26, 52, 323, DateTimeKind.Local).AddTicks(8349),
+                            TenSPChiTiet = "V2",
+                            TrangThai = 1
+                        },
+                        new
+                        {
+                            Id = new Guid("ec94662b-535d-4599-b462-9951c727be51"),
+                            AnhDaiDien = "null",
+                            AnhPhu1 = "null",
+                            AnhPhu2 = "null",
+                            AnhPhu3 = "null",
+                            GiaBan = 100000m,
+                            GiaNhap = 80000m,
+                            IdMauSac = new Guid("8d364a55-877f-45a5-9408-66afb8ab873f"),
+                            IdSP = new Guid("01bf8a6c-d89a-4db2-9068-af277be488ae"),
+                            MaSPChiTiet = "SP1",
+                            NgayTao = new DateTime(2023, 6, 6, 22, 26, 52, 323, DateTimeKind.Local).AddTicks(8353),
                             TenSPChiTiet = "V1",
+                            TrangThai = 1
+                        },
+                        new
+                        {
+                            Id = new Guid("bcb53bdb-2f7e-4026-a5a3-09ff834562ad"),
+                            AnhDaiDien = "null",
+                            AnhPhu1 = "null",
+                            AnhPhu2 = "null",
+                            AnhPhu3 = "null",
+                            GiaBan = 200000m,
+                            GiaNhap = 180000m,
+                            IdMauSac = new Guid("cfa013b0-34dc-44d5-a471-7c49a9ac167d"),
+                            IdSP = new Guid("9a1b3786-d0d0-402a-bfd8-10db04f8e6ed"),
+                            MaSPChiTiet = "SP2",
+                            NgayTao = new DateTime(2023, 6, 6, 22, 26, 52, 323, DateTimeKind.Local).AddTicks(8357),
+                            TenSPChiTiet = "V2",
                             TrangThai = 1
                         });
                 });
@@ -623,10 +734,220 @@ namespace _2_Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("1d1cde20-7455-48ca-8e25-aea8c98a4671"),
+                            Id = new Guid("7378b6ec-8274-4186-8855-0cafc1ce5881"),
+                            IdSanPhamChiTiet = new Guid("7aaf5675-683d-4608-9534-ea737a4247b3"),
+                            IdSize = new Guid("d43ed236-c9cf-4659-ba0d-f834bb316d39"),
+                            SoLuong = 5
+                        },
+                        new
+                        {
+                            Id = new Guid("d09fd8b7-8263-4014-91d8-63ea9470a8de"),
+                            IdSanPhamChiTiet = new Guid("7aaf5675-683d-4608-9534-ea737a4247b3"),
+                            IdSize = new Guid("d6dc21e2-f1be-48ec-8f30-bd6bbc73daec"),
+                            SoLuong = 5
+                        },
+                        new
+                        {
+                            Id = new Guid("5885a945-5722-4177-8fa7-d26b0dacf980"),
+                            IdSanPhamChiTiet = new Guid("7aaf5675-683d-4608-9534-ea737a4247b3"),
+                            IdSize = new Guid("9297a9b2-5c69-4b52-af99-57bbf137dcf1"),
+                            SoLuong = 5
+                        },
+                        new
+                        {
+                            Id = new Guid("0515437f-c4ab-4956-8b65-4f7d183b1620"),
+                            IdSanPhamChiTiet = new Guid("7aaf5675-683d-4608-9534-ea737a4247b3"),
+                            IdSize = new Guid("3a218de7-0c55-4b70-a0d8-823195532b66"),
+                            SoLuong = 10
+                        },
+                        new
+                        {
+                            Id = new Guid("bec142a2-48ab-4785-8295-63a08d7dbf99"),
+                            IdSanPhamChiTiet = new Guid("7aaf5675-683d-4608-9534-ea737a4247b3"),
+                            IdSize = new Guid("2d53402b-696d-4e6e-b95e-fb5f2a99c014"),
+                            SoLuong = 5
+                        },
+                        new
+                        {
+                            Id = new Guid("a18febe6-0a68-44cb-8ca0-1514f5bb6d48"),
+                            IdSanPhamChiTiet = new Guid("7aaf5675-683d-4608-9534-ea737a4247b3"),
+                            IdSize = new Guid("560cd8d3-52cc-4204-9145-0a142cdac1fd"),
+                            SoLuong = 5
+                        },
+                        new
+                        {
+                            Id = new Guid("6b5d160a-2812-4c8c-a63d-0a4535990221"),
+                            IdSanPhamChiTiet = new Guid("7aaf5675-683d-4608-9534-ea737a4247b3"),
+                            IdSize = new Guid("9b9a3a86-196e-4fb2-9300-a64784962d59"),
+                            SoLuong = 5
+                        },
+                        new
+                        {
+                            Id = new Guid("a8b2d347-1af2-4027-8c6c-f368e567675f"),
+                            IdSanPhamChiTiet = new Guid("51a13afd-08d1-4a20-a0e0-fb4447bd215d"),
+                            IdSize = new Guid("cd27319d-468d-4189-99a4-b2da273492a3"),
+                            SoLuong = 10
+                        },
+                        new
+                        {
+                            Id = new Guid("289ce400-38f1-47fc-a5fc-dbf88bf2582e"),
                             IdSanPhamChiTiet = new Guid("51a13afd-08d1-4a20-a0e0-fb4447bd215d"),
                             IdSize = new Guid("d43ed236-c9cf-4659-ba0d-f834bb316d39"),
+                            SoLuong = 5
+                        },
+                        new
+                        {
+                            Id = new Guid("a16d0a3a-97e9-4b41-8c6a-54e35cdeaca3"),
+                            IdSanPhamChiTiet = new Guid("51a13afd-08d1-4a20-a0e0-fb4447bd215d"),
+                            IdSize = new Guid("d6dc21e2-f1be-48ec-8f30-bd6bbc73daec"),
+                            SoLuong = 5
+                        },
+                        new
+                        {
+                            Id = new Guid("06dd39cf-f6c7-4605-9d4a-b4f764c29c73"),
+                            IdSanPhamChiTiet = new Guid("51a13afd-08d1-4a20-a0e0-fb4447bd215d"),
+                            IdSize = new Guid("9297a9b2-5c69-4b52-af99-57bbf137dcf1"),
+                            SoLuong = 5
+                        },
+                        new
+                        {
+                            Id = new Guid("b172bc46-4292-4013-b327-6b2e3def9513"),
+                            IdSanPhamChiTiet = new Guid("51a13afd-08d1-4a20-a0e0-fb4447bd215d"),
+                            IdSize = new Guid("3a218de7-0c55-4b70-a0d8-823195532b66"),
                             SoLuong = 10
+                        },
+                        new
+                        {
+                            Id = new Guid("75c5f866-2e78-49bb-80bb-fcd9c7d662c8"),
+                            IdSanPhamChiTiet = new Guid("51a13afd-08d1-4a20-a0e0-fb4447bd215d"),
+                            IdSize = new Guid("2d53402b-696d-4e6e-b95e-fb5f2a99c014"),
+                            SoLuong = 5
+                        },
+                        new
+                        {
+                            Id = new Guid("fbad9b0b-0e5a-43a0-8fc9-6aebc586420c"),
+                            IdSanPhamChiTiet = new Guid("51a13afd-08d1-4a20-a0e0-fb4447bd215d"),
+                            IdSize = new Guid("560cd8d3-52cc-4204-9145-0a142cdac1fd"),
+                            SoLuong = 5
+                        },
+                        new
+                        {
+                            Id = new Guid("fe243159-e3d5-4e38-b4d5-875b908b1d73"),
+                            IdSanPhamChiTiet = new Guid("51a13afd-08d1-4a20-a0e0-fb4447bd215d"),
+                            IdSize = new Guid("9b9a3a86-196e-4fb2-9300-a64784962d59"),
+                            SoLuong = 5
+                        },
+                        new
+                        {
+                            Id = new Guid("101c81ee-1ca5-4570-be45-c453527fa9aa"),
+                            IdSanPhamChiTiet = new Guid("ec94662b-535d-4599-b462-9951c727be51"),
+                            IdSize = new Guid("cd27319d-468d-4189-99a4-b2da273492a3"),
+                            SoLuong = 10
+                        },
+                        new
+                        {
+                            Id = new Guid("507812da-fb24-4429-b50f-c1f5c28d2cc5"),
+                            IdSanPhamChiTiet = new Guid("ec94662b-535d-4599-b462-9951c727be51"),
+                            IdSize = new Guid("d43ed236-c9cf-4659-ba0d-f834bb316d39"),
+                            SoLuong = 5
+                        },
+                        new
+                        {
+                            Id = new Guid("69d226ff-ad05-477f-8aaf-d4e9c8785233"),
+                            IdSanPhamChiTiet = new Guid("ec94662b-535d-4599-b462-9951c727be51"),
+                            IdSize = new Guid("d6dc21e2-f1be-48ec-8f30-bd6bbc73daec"),
+                            SoLuong = 5
+                        },
+                        new
+                        {
+                            Id = new Guid("c5890b6f-463f-4ab3-9dba-cab55b32e929"),
+                            IdSanPhamChiTiet = new Guid("ec94662b-535d-4599-b462-9951c727be51"),
+                            IdSize = new Guid("9297a9b2-5c69-4b52-af99-57bbf137dcf1"),
+                            SoLuong = 5
+                        },
+                        new
+                        {
+                            Id = new Guid("ec43012e-0ca2-4379-bccf-abd59824b300"),
+                            IdSanPhamChiTiet = new Guid("ec94662b-535d-4599-b462-9951c727be51"),
+                            IdSize = new Guid("3a218de7-0c55-4b70-a0d8-823195532b66"),
+                            SoLuong = 10
+                        },
+                        new
+                        {
+                            Id = new Guid("daa1d08d-ec42-4db9-9c91-1ec72a7a7a09"),
+                            IdSanPhamChiTiet = new Guid("ec94662b-535d-4599-b462-9951c727be51"),
+                            IdSize = new Guid("2d53402b-696d-4e6e-b95e-fb5f2a99c014"),
+                            SoLuong = 5
+                        },
+                        new
+                        {
+                            Id = new Guid("1030ea99-2996-4537-b301-3ff511199b66"),
+                            IdSanPhamChiTiet = new Guid("ec94662b-535d-4599-b462-9951c727be51"),
+                            IdSize = new Guid("560cd8d3-52cc-4204-9145-0a142cdac1fd"),
+                            SoLuong = 5
+                        },
+                        new
+                        {
+                            Id = new Guid("df277b8d-c5d0-4f62-9df1-9b60a896f634"),
+                            IdSanPhamChiTiet = new Guid("ec94662b-535d-4599-b462-9951c727be51"),
+                            IdSize = new Guid("9b9a3a86-196e-4fb2-9300-a64784962d59"),
+                            SoLuong = 5
+                        },
+                        new
+                        {
+                            Id = new Guid("4d38cd83-32ca-415b-8fbe-88b9a23489c5"),
+                            IdSanPhamChiTiet = new Guid("bcb53bdb-2f7e-4026-a5a3-09ff834562ad"),
+                            IdSize = new Guid("cd27319d-468d-4189-99a4-b2da273492a3"),
+                            SoLuong = 10
+                        },
+                        new
+                        {
+                            Id = new Guid("efc5ffac-f3c6-4c13-a205-51cb97e7a99a"),
+                            IdSanPhamChiTiet = new Guid("bcb53bdb-2f7e-4026-a5a3-09ff834562ad"),
+                            IdSize = new Guid("d43ed236-c9cf-4659-ba0d-f834bb316d39"),
+                            SoLuong = 5
+                        },
+                        new
+                        {
+                            Id = new Guid("f10629ff-6d82-462d-9f28-a22ac96ff880"),
+                            IdSanPhamChiTiet = new Guid("bcb53bdb-2f7e-4026-a5a3-09ff834562ad"),
+                            IdSize = new Guid("d6dc21e2-f1be-48ec-8f30-bd6bbc73daec"),
+                            SoLuong = 5
+                        },
+                        new
+                        {
+                            Id = new Guid("801a3395-42b9-4874-8144-7d98bd15122e"),
+                            IdSanPhamChiTiet = new Guid("bcb53bdb-2f7e-4026-a5a3-09ff834562ad"),
+                            IdSize = new Guid("9297a9b2-5c69-4b52-af99-57bbf137dcf1"),
+                            SoLuong = 5
+                        },
+                        new
+                        {
+                            Id = new Guid("57987315-cc58-4f70-918f-23858dcea978"),
+                            IdSanPhamChiTiet = new Guid("bcb53bdb-2f7e-4026-a5a3-09ff834562ad"),
+                            IdSize = new Guid("3a218de7-0c55-4b70-a0d8-823195532b66"),
+                            SoLuong = 10
+                        },
+                        new
+                        {
+                            Id = new Guid("e0e5863b-7ae4-47d5-9a96-4c0f732af3f0"),
+                            IdSanPhamChiTiet = new Guid("bcb53bdb-2f7e-4026-a5a3-09ff834562ad"),
+                            IdSize = new Guid("2d53402b-696d-4e6e-b95e-fb5f2a99c014"),
+                            SoLuong = 5
+                        },
+                        new
+                        {
+                            Id = new Guid("e1cff87b-abd8-4bf0-a7ce-199bd2716fc0"),
+                            IdSanPhamChiTiet = new Guid("bcb53bdb-2f7e-4026-a5a3-09ff834562ad"),
+                            IdSize = new Guid("560cd8d3-52cc-4204-9145-0a142cdac1fd"),
+                            SoLuong = 5
+                        },
+                        new
+                        {
+                            Id = new Guid("69e6c908-ea91-4c4a-86f2-c5cb26ff9ee4"),
+                            IdSanPhamChiTiet = new Guid("bcb53bdb-2f7e-4026-a5a3-09ff834562ad"),
+                            IdSize = new Guid("9b9a3a86-196e-4fb2-9300-a64784962d59"),
+                            SoLuong = 5
                         });
                 });
 
@@ -643,6 +964,18 @@ namespace _2_Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("TheLoai", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("8d364a55-877f-45a5-9408-66afb8ab8731"),
+                            TenTheLoai = "Giày Chạy Bộ"
+                        },
+                        new
+                        {
+                            Id = new Guid("8d364a55-877f-45a5-9408-66afb8ab8733"),
+                            TenTheLoai = "Giày Bóng Rổ"
+                        });
                 });
 
             modelBuilder.Entity("Data.ModelsClass.TheLoaiSanPham", b =>
@@ -685,6 +1018,10 @@ namespace _2_Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Data.ModelsClass.KichCo", "kichCo")
+                        .WithMany("giohangChitiets")
+                        .HasForeignKey("IdKichCo");
+
                     b.HasOne("Data.ModelsClass.SanphamChitiet", "sanphamChitiet")
                         .WithMany("giohangChitiets")
                         .HasForeignKey("IdSPChitiet")
@@ -692,6 +1029,8 @@ namespace _2_Data.Migrations
                         .IsRequired();
 
                     b.Navigation("gioHang");
+
+                    b.Navigation("kichCo");
 
                     b.Navigation("sanphamChitiet");
                 });
@@ -738,6 +1077,10 @@ namespace _2_Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Data.ModelsClass.KichCo", "kichCo")
+                        .WithMany("hoadonChitiets")
+                        .HasForeignKey("IdKichCo");
+
                     b.HasOne("Data.ModelsClass.SanphamChitiet", "sanphamChitiet")
                         .WithMany("hoadonChitiets")
                         .HasForeignKey("IdSPChitiet")
@@ -745,6 +1088,8 @@ namespace _2_Data.Migrations
                         .IsRequired();
 
                     b.Navigation("hoaDon");
+
+                    b.Navigation("kichCo");
 
                     b.Navigation("sanphamChitiet");
                 });
@@ -864,6 +1209,10 @@ namespace _2_Data.Migrations
             modelBuilder.Entity("Data.ModelsClass.KichCo", b =>
                 {
                     b.Navigation("SizeSanPhams");
+
+                    b.Navigation("giohangChitiets");
+
+                    b.Navigation("hoadonChitiets");
                 });
 
             modelBuilder.Entity("Data.ModelsClass.MaGiamGia", b =>

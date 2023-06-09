@@ -4,6 +4,7 @@
 @{
     ViewData["Title"] = "Edit";
     var lstSize = ViewData["lstSize"] as List<KichCo>;
+    var lstSizeSp = ViewData["lstSizeSp"] as List<SizeSanPham>;
 }
 
 <h1>Edit</h1>
@@ -18,7 +19,7 @@
             <input type="hidden" asp-for="IdSize" />
             <div class="form-group">
                 <label asp-for="IdSize" class="control-label">Size</label>
-                <select class="form-select" disabled>
+                <select class="form-select">
                     @foreach (var item in lstSize)
                     {
                         <option value="@item.Id">

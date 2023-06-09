@@ -31,7 +31,7 @@ namespace ProjectViews.Controllers
                      {
                          Id = a.Id,
                          Ten = a.Ten,
-                         TrangThai = a.TrangThai == 1 ? "Đang hoạt động" : "Ngưng hoạt động",
+                         TrangThai = a.TrangThai,
                          TenHang = b.TenHang  
                      };
 
@@ -139,7 +139,7 @@ namespace ProjectViews.Controllers
                                   Id = a.Id,
                                   Ten = a.Ten,
                                   TenHang = b.TenHang,
-                                  TrangThai = a.TrangThai == 1 ? "Đang hoạt động" : "Ngưng hoạt động"
+                                  TrangThai = a.TrangThai
                               };
                     if (!string.IsNullOrEmpty(ten))
                     {
@@ -158,7 +158,7 @@ namespace ProjectViews.Controllers
                                  Id = a.Id,
                                  Ten = a.Ten,
                                  TenHang = b.TenHang,
-                                 TrangThai = a.TrangThai == 1 ? "Đang hoạt động" : "Ngưng hoạt động"
+                                 TrangThai = a.TrangThai
                              };
                     sp = sp.Where(p => p.Ten.ToLower().Contains(ten.ToLower()));
                     return View("Index", sp);

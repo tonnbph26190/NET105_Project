@@ -63,7 +63,7 @@
                     @Html.DisplayFor(modelItem => item.Ten)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.TrangThai)
+                    @(item.TrangThai == 1 ? "Hoạt động" : "Không hoạt động")
                 </td>
 
                 <td>

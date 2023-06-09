@@ -68,7 +68,7 @@
 
                 <div class="money">
                     <p>
-                        <span style="color: #e0826f; font-weight: lighter;text-decoration: line-through;"> </span> Giá : @Html.DisplayFor(model => model.GiaBan) <span>VNĐ</span>
+                        <span style="color: #e0826f; font-weight: lighter;text-decoration: line-through;"> </span> Giá : @string.Format("{0:N0}đ", Model.GiaBan);
                     </p>
                 </div>
                 <form asp-controller="Cart" asp-action="Add" asp-route-ma="@Model.Id">
