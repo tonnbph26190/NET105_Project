@@ -28,9 +28,21 @@ namespace ProjectViews.Controllers
                      };
             return View(hd);
         }
+        public async Task<IActionResult> Index2()
+        {
+            var hd = from a in await _services.GetAll<HoaDon>("https://localhost:7203/api/HoaDons/Get-All")
+                     where a.TrangThai == 2
+                     select new ViewHoaDon()
+                     {
+                         Id = a.Id,
+                         MaHD = a.MaHD,
+                         NgayTao = a.NgayTao.Value.Day + "" + "/" + a.NgayTao.Value.Month + "" + "/" + a.NgayTao.Value.Year + ""
+                     };
+            return View(hd);
+        }
 
-        
 
-        
+
+
     }
 }

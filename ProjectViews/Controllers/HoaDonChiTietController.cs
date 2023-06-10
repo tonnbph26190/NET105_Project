@@ -91,7 +91,7 @@ namespace ProjectViews.Controllers
         }
         public async Task<IActionResult> Confirm(string id)
         {
-            var idnv = HttpContext.Session.GetString("idnv");
+            var idnv =  HttpContext.Session.GetString("idnv");
             var hd = await _services.GetById<HoaDon>("https://localhost:7203/api/HoaDons/GetById/", Guid.Parse(id));
             UpdateHoaDon updateHoaDon = new UpdateHoaDon()
             {
