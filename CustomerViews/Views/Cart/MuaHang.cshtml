@@ -31,9 +31,9 @@
                 <td><img src="@(lstSPCT.FirstOrDefault(x=>x.Id == item.IdSPChitiet).AnhDaiDien)" width="60" /></td>
                 <td>@(tensp = lstSPCT.FirstOrDefault(x => x.Id == item.IdSPChitiet).TenSPChiTiet)</td>
                 <td>@(size = lstKC.FirstOrDefault(x=>x.Id == item.IdKichCo).Size.ToString())</td>
-                <td>@item.GiaBan</td>
+                <td>  @string.Format("{0:N0}đ", item.GiaBan)</td>
                 <td>@item.SoLuong</td>
-                <td class="text-end">@(thanhtien = item.GiaBan * item.SoLuong)</td>
+                <td class="text-end">@string.Format("{0:N0}đ",thanhtien = item.GiaBan * item.SoLuong)</td>
 
             </tr>
         }
@@ -50,7 +50,7 @@
             </form>
         </tr>
         <tr>
-            <td class="text-end" colspan="7"><h6>Tổng tiền: @tt</h6> </td>
+            <td class="text-end" colspan="7"><h6>Tổng tiền:   @string.Format("{0:N0}đ", tt)</h6> </td>
         </tr>
         <tr>
             <td colspan="7" class="text-end">

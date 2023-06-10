@@ -62,7 +62,7 @@
 												Giá gốc: <del> @(@*sale =*@ item.GiaBan * 2) $</del>
 									</p>
 									<p class="">
-										<b style="color:red">Sale: @Html.DisplayFor(modelItem => item.GiaBan) $</b>
+									<b style="color:red">Sale:   @string.Format("{0:N0}đ", item.GiaBan)</b>
 									</p>
 									<p class="">
 										<b>Trạng thái:@(item.TrangThai==1 ? "Còn hàng" : "Hết hàng")</b>

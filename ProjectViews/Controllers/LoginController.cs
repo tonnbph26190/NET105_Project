@@ -37,5 +37,11 @@ namespace ProjectViews.Controllers
             }
             return View("Index");
         }
+        public IActionResult DangXuat()
+        {
+            HttpContext.Session.Remove("idnv");
+            HttpContext.Session.Remove("name");
+            return RedirectToAction("LoginToAdmin");
+        }
     }
 }

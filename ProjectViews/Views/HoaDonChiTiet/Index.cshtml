@@ -62,7 +62,7 @@
                 </td>
 
                 <td>
-                    @Html.DisplayFor(modelItem => item.GiaBan)
+                    @string.Format("{0:N0}đ", item.GiaBan)
                 </td>
                 <td>
                     @Html.ActionLink("Delete", "DeleteSP", new { Id = item.Idhoadonct.ToString() },
