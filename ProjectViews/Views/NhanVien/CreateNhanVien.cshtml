@@ -1,0 +1,131 @@
+﻿@using Data.ModelsClass
+@model _1_API.ViewModel.NhanVien.NhanVienModel
+
+@{
+    ViewData["Title"] = "CreateNhanVien";
+    var lstChucVu = ViewData["ListChucVu"] as List<ChucVu>;
+    var lstNhanVien = ViewData["ListNhanVien"] as List<NhanVien>;
+}
+
+<h1>Thêm Nhân Viên</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="CreateNhanVien" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row">
+
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label asp-for="Ten" class="control-label">Họ và tên</label>
+                        <input asp-for="Ten" class="form-control" />
+                        <span asp-validation-for="Ten" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="GioiTinh" class="control-label">Giới tính</label>
+                        <select asp-for="GioiTinh" class="form-select">
+                            <option value="true" selected>Nam</option>
+                            <option value="false">Nữ</option>
+                        </select>
+                        <span asp-validation-for="GioiTinh" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="NgaySinh" class="control-label">Ngày sinh</label>
+                        <input asp-for="NgaySinh" type="date" class="form-control" />
+                        <span asp-validation-for="NgaySinh" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Sdt" class="control-label">Số điện thoại</label>
+                        <input asp-for="Sdt" class="form-control" />
+                        <span asp-validation-for="Sdt" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="DiaChi" class="control-label">Địa chỉ</label>
+                        <input asp-for="DiaChi" class="form-control" />
+                        <span asp-validation-for="DiaChi" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label asp-for="Email" class="control-label">Email</label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="MatKhau" class="control-label">Mật khẩu</label>
+                        <input asp-for="MatKhau" class="form-control" />
+                        <span asp-validation-for="MatKhau" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="IdCvu" class="control-label">Chức vụ</label>
+                        <select class="form-select" asp-for="IdCvu">
+                            @foreach (var item in lstChucVu)
+                            {
+                                <option value="@item.Id">@item.Ten</option>
+                            }
+                        </select>
+                        <span asp-validation-for="IdCvu" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="IdGuiBaoCao" class="control-label">Người gửi báo cáo</label>
+                        <select class="form-select" asp-for="IdGuiBaoCao">
+                            <option value=""></option>
+                            @foreach (var item in lstNhanVien)
+                            {
+                                <option value="@item.Id">@item.MaNV</option>
+                            }
+                        </select>
+                        <span asp-validation-for="IdGuiBaoCao" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="TrangThai" class="control-label">Trạng thái</label>
+                        <select asp-for="TrangThai" class="form-select">
+                            <option value="1" selected>Đang hoạt động</option>
+                            <option value="0">Ngưng hoạt động</option>
+                        </select>
+                        <span asp-validation-for="TrangThai" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="row">
+                        <label asp-for="ImageFile" class="control-label">Ảnh</label>
+                    </div>
+
+                    <img id="FrontImagePrv" src="" alt="Logo Image" width="150px" height="150px" style="border:1px; margin-top: 0px; margin-left:0px" />
+                    <div class="custom-file mt-2">
+                        <input asp-for="ImageFile" class="custom-file-input" id="FLFrontImage" accept="image/*"
+                               onchange="document.getElementById('FrontImagePrv').src = window.URL.createObjectURL(this.files[0])" />
+                    </div>
+                    <span asp-validation-for="ImageFile" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row mt-3">
+
+                <div class="col-md-10">
+                    <div class="form-group" style="text-align: center">
+                        <input type="submit" value="Thêm Nhân Viên" class="btn btn-primary" />
+                    </div>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script type="text/javascript">
+        $(".custom-file-input").on("change", function () {
+            var filename = $(this).val().split("\\").pop();
+            $(this).siblings(".custom-file-label").addClass("selected").html(filename);
+        });
+    </script>
+    }

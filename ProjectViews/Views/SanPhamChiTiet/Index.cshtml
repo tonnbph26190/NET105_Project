@@ -1,0 +1,66 @@
+﻿@model IEnumerable<_1_API.ViewModel.SanphamChitiet.ViewSanPhamChiTiet>
+
+@{
+    ViewData["Title"] = "Index";
+    string idSanPham = ViewData["idSanPham"] as string;
+}
+
+<h1>Chi Tiết Sản Phẩm</h1>
+
+<p>
+    <a asp-controller="SanPhamChiTiet" asp-action="Create" asp-route-id="@idSanPham">Thêm chi tiết sản phẩm</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Ảnh
+            </th>   
+            <th>
+                Mã
+            </th>
+            <th>
+                Tên chi tiết
+            </th>
+            <th>
+                Màu sắc
+            </th>
+            <th>
+                Giá bán
+            </th>
+            <th>
+                Trạng thái
+            </th>
+            <th>Chức năng</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                    <img src="@("~/AnhChiTietSanPham/"+item.AnhDaiDien)" alt="@item.AnhDaiDien" asp-append-version="true" width="120px" height="140px" />
+            </td>           
+            <td>
+                @Html.DisplayFor(modelItem => item.MaSPChiTiet)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenSPChiTiet)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenMauSac)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GiaBan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TrangThai)
+            </td>
+            <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Cập nhật</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Chi Tiết</a> |
+                    <a asp-controller="SizeSanPham" asp-action="Create" asp-route-id="@item.Id">Quản lý size</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,277 @@
+﻿@using _1_API.ViewModel.SizeSanPham;
+@using _1_API.ViewModel.KhachHang;
+@model Data.ModelsClass.SanphamChitiet
+
+
+@{
+    ViewData["Title"] = "DetailSPCT";
+    var lstSize = ViewData["listSize"] as List<SizeSanPhamModel>;
+    var listKH = ViewData["listKH"] as List<ViewKhachHang>;
+    var name = Context.Session.GetString("ten");
+    var diachi = ViewData["diachi"] as string;
+    var loi = ViewData["loi"] as string;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - CustomerViews</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/SPChiTiet.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/CustomerViews.styles.css" asp-append-version="true" />
+</head>
+
+<div class="container">
+    <div class="detail_product">
+        <div class="row">
+            <div class="col-5">
+                <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="~/img/@Model.AnhDaiDien" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="~/img/@Model.AnhPhu1" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="~/img/@Model.AnhPhu2" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="~/img/@Model.AnhPhu3" class="d-block w-100" alt="...">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+            <div class="col-7">
+                <div class="name">
+                    <h4> @Html.DisplayFor(model => model.sanPham.Ten)</h4>
+                </div>
+                <div class="product_span">
+                    <span>
+                        <b>4.5</b> <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"> </i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i> <i class="bi bi-star-half"> </i>
+                    </span>
+                    <span> <b>100</b> Đánh giá</span>
+                </div>
+
+                <div class="money">
+                    <p>
+                        <span style="color: #e0826f; font-weight: lighter;text-decoration: line-through;"> </span> Giá : @Html.DisplayFor(model => model.GiaBan) <span>VNĐ</span>
+                    </p>
+                </div>
+                <form asp-controller="Cart" asp-action="Add" asp-route-ma="@Model.Id">
+                    <div class="ship">
+                        <p>
+                            Vận chuyển
+                            <span class><i class="bi bi-truck"></i> Miễn phí vận chuyển</span>
+                        </p>
+                        @if (name != null)
+                        {
+                            <p class="p">
+                                <i class="bi bi-truck" style="color: #000"></i> Vận chuyển tới
+                                <span>
+                                    @diachi
+                                </span>
+                            </p>
+                        }
+
+                        <p class="p2">
+                            Phí vận chuyển
+                            <span> 0đ</span>
+                        </p>
+                        <p class="p4">
+                            @if (loi != null)
+                            {
+                                <div class="alert alert-danger">
+                                    @loi
+                                </div>
+                            }
+
+                            Size:
+                            @foreach (var item in lstSize)
+                            {
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="idSize" value="@item.Id">
+                                    <label class="form-check-label" for="inlineRadio1">@item.Size</label>
+                                </div>
+                            }
+                        </p>
+                        <p class="p5">
+                            Màu sắc:
+                            <button type="button" value="" class="btn btn-secondary">@Html.DisplayFor(model => model.mauSac.TenMau)</button>
+                        </p>
+                        <p class="p3">
+                            @if (loi != null)
+                            {
+                                    <div class="alert alert-danger">
+                                    @loi
+                                    </div>
+                            }
+                            Số lượng
+                            <input type="number" name="soluong" value="1" />
+                        </p>
+                    </div>
+                    <div class="detail_button">
+                        <div class="d-grid gap-2 d-md-block"
+                             style="text-align: center; margin-top: 20px">
+                            <button class="btn btn-outline-light border-radius-sm"
+                                    type="submit"
+                                    style="background-color: #23ab9b">
+
+                                <a class="nav-link"> <i class="bi bi-cart-plus"></i> Thêm vào giỏ hàng</a>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="detail_body">
+                <div class="CT_product">
+                    <h2>CHI TIẾT SẢN PHẨM</h2>
+                    <div class="mb-1 row">
+                        <label for="staticEmail" class="col-sm-1 col-form-label">Tình trạng</label>
+                        <div class="col-sm-10">
+                            <div class="col-sm-6">
+                                <input type="text"
+                                       readonly
+                                       class="form-control-plaintext"
+                                       id="staticEmail"
+                                       value="Đã Sử Dụng" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-1 row">
+                        <label for="staticEmail" class="col-sm-1 col-form-label">Xuất xứ</label>
+                        <div class="col-sm-10">
+                            <div class="col-sm-2">
+                                <input type="text"
+                                       readonly
+                                       class="form-control-plaintext"
+                                       id="staticEmail"
+                                       value="Việt Nam" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-1 row">
+                        <label for="staticEmail" class="col-sm-1 col-form-label">Chất liệu</label>
+                        <div class="col-sm-10">
+                            <div class="col-sm-2">
+                                <input type="text"
+                                       readonly
+                                       class="form-control-plaintext"
+                                       id="staticEmail"
+                                       value="Khác" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-1 row">
+                        <label for="staticEmail" class="col-sm-1 col-form-label">Dịp</label>
+                        <div class="col-sm-10">
+                            <div class="col-sm-2">
+                                <input type="text"
+                                       readonly
+                                       class="form-control-plaintext"
+                                       id="staticEmail"
+                                       value="Thể thao" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-1 row">
+                        <label for="staticEmail" class="col-sm-1 col-form-label">Cổ giày</label>
+                        <div class="col-sm-10">
+                            <div class="col-sm-2">
+                                <input type="text"
+                                       readonly
+                                       class="form-control-plaintext"
+                                       id="staticEmail"
+                                       value="Cổ thấp" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-1 row">
+                        <label for="staticEmail" class="col-sm-1 col-form-label">Kho hàng</label>
+                        <div class="col-sm-10">
+                            <div class="col-sm-2">
+                                <input type="text"
+                                       readonly
+                                       class="form-control-plaintext"
+                                       id="staticEmail"
+                                       value="10000" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-4 row">
+                        <label for="staticEmail" class="col-sm-1 col-form-label">Gửi từ</label>
+                        <div class="col-sm-10">
+                            <div class="col-sm-2">
+                                <input type="text"
+                                       readonly
+                                       class="form-control-plaintext"
+                                       id="staticEmail"
+                                       value="Hà Nội" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="MT_product">
+                    <h2>MÔ TẢ SẢN PHẨM</h2>
+                    <p>
+                        Đôi giày màu trắng là một phụ kiện "phải có" trong tủ đồ của các bạn
+                        trẻ. Bởi tính ứng dụng cao trong thời trang, giày trắng thường giúp
+                        chúng ta dễ phối đồ hơn và có thể mang phù hợp với bất cứ dịp nào
+                        (đi học, đi chơi, ...). The sneaker shop đảm bảo mang lại cho các bạn
+                        một đôi giày trắng vừa xinh vừa hời. Ngại gì không tậu ngay một đôi
+                        nào!!
+                    </p>
+                    <p>
+                        - THÔNG TIN SẢN PHẨM:
+                        <span>+ Chất liệu giày: da sần, da trơn nhẵn.</span>
+                        <span>+ Màu: trắng</span>
+                        <span>
+                            + Size: từ 36 đến 43 (các bạn tham khảo thêm bảng size để chọn
+                            được một đôi giày ưng ý nhất nhé)
+                        </span>
+                        <span>+ Chiều cao: đế cao 2,5 cm</span>
+                        <span>+ Trọng lượng Giày : 800g</span>
+                    </p>
+                    <p>
+                        - Gợi ý các dịp phù hợp để sử dụng:
+                        <span>
+                            + Mọi hoạt động hàng ngày (đi chơi, đi học, thể dục thể thao,...)
+                        </span>
+                        <span>
+                            + Phối với các trang phục năng động hoặc đồ âu đều dễ dàng và tôn
+                            dáng
+                        </span>
+                    </p>
+                    <p>
+                        - CHẾ ĐỘ BẢO HÀNH VÀ ĐỔI TRẢ <span> Chế độ đổi trả:</span><span>+ Nếu giày lỗi bên shop sẽ hỗ trợ đổi, trả miễn phí 100%</span><span>
+                            + Trường hợp mua giày về mà size quá rộng hoặc quá chật, liên hệ
+                            lại shop trong vòng 7 ngày (kể từ ngày nhận sản phẩm) để nhận đổi
+                            trả
+                        </span>
+                    </p>
+                    <p>
+                        Cảm ơn các bạn đã quan tâm đến sản phẩm của shop. Đừng quên đánh giá
+                        5 sao khi nhận được hàng nhé!!
+                        <span>
+                            * Mọi chi tiết và thắc mắc xin liên hệ lại shop để được giải đáp
+                            tận tình.
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
